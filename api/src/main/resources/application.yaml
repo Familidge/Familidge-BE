@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: familidge
+  profiles:
+    include:
+    - infrastructure
+    - env
+  main:
+    banner-mode: off
