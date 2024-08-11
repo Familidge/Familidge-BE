@@ -24,6 +24,8 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
 spring-kotlin = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 restdocs-openapi = { id = "com.epages.restdocs-api-spec", version.ref = "restdocs-openapi" }
+java-library = { id = "java-library" }
+java-fixture = { id = "java-test-fixtures" }
 
 [bundles]
 kotest = ["kotest-junit", "kotest-assertion", "kotest-extension"]
