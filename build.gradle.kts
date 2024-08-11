@@ -1,8 +1,8 @@
 plugins {
-    id("org.springframework.boot") version "3.3.2"
-    id("io.spring.dependency-management") version "1.1.6"
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.spring") version "1.9.24"
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spring.kotlin)
 }
 
 java {
@@ -22,10 +22,10 @@ allprojects {
 
 subprojects {
     apply {
-        plugin("kotlin")
-        plugin("kotlin-spring")
-        plugin("org.springframework.boot")
-        plugin("io.spring.dependency-management")
+        plugin(rootProject.libs.plugins.kotlin)
+        plugin(rootProject.libs.plugins.spring.boot)
+        plugin(rootProject.libs.plugins.spring.dependency.management)
+        plugin(rootProject.libs.plugins.spring.kotlin)
     }
 
     dependencies {
@@ -56,3 +56,6 @@ subprojects {
         }
     }
 }
+
+private fun ObjectConfigurationAction.plugin(provider: Provider<PluginDependency>): ObjectConfigurationAction =
+    plugin(provider.get().pluginId)
