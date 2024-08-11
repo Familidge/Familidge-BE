@@ -6,6 +6,10 @@ dependencies {
     implementation(project(":domain"))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
+    testFixturesImplementation(libs.bundles.kotest)
+    testFixturesImplementation(libs.bundles.mockk)
+    testFixturesImplementation(libs.bundles.restdocs)
 }
 
 tasks {
