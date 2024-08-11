@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.spring.kotlin)
+    alias(libs.plugins.restdocs.openapi)
 }
 
 java {
@@ -26,6 +27,7 @@ subprojects {
         plugin(rootProject.libs.plugins.spring.boot)
         plugin(rootProject.libs.plugins.spring.dependency.management)
         plugin(rootProject.libs.plugins.spring.kotlin)
+        plugin(rootProject.libs.plugins.restdocs.openapi)
     }
 
     dependencies {
@@ -35,6 +37,7 @@ subprojects {
         testImplementation("org.springframework.security:spring-security-test")
         testImplementation(rootProject.libs.bundles.kotest)
         testImplementation(rootProject.libs.bundles.mockk)
+        testImplementation(rootProject.libs.bundles.restdocs)
     }
 
     tasks {
