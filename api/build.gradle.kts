@@ -1,3 +1,5 @@
+import com.epages.restdocs.apispec.gradle.OpenApi3Task
+
 dependencies {
     implementation(project(":infrastructure"))
     implementation(project(":application"))
@@ -7,11 +9,23 @@ dependencies {
 }
 
 tasks {
+    test {
+        finalizedBy(withType<OpenApi3Task>())
+    }
+
     jar {
         enabled = false
     }
 
     bootJar {
         enabled = true
+    }
+
+    openapi3 {
+        title = "Familidge API"
+        version = "v1"
+        format = "yaml"
+        outputFileNamePrefix = "api"
+        outputDirectory = "src/main/resources/static/docs"
     }
 }
