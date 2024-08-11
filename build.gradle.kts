@@ -33,6 +33,8 @@ subprojects {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("org.springframework.security:spring-security-test")
+        testImplementation(rootProject.libs.bundles.kotest)
+        testImplementation(rootProject.libs.bundles.mockk)
     }
 
     tasks {
