@@ -2,13 +2,17 @@
 kotlin = "1.9.24"
 spring-boot = "3.3.2"
 spring-dependency-management = "1.1.6"
+kotlin-logging = "7.0.0"
 kotest = "5.9.1"
 kotest-extension = "1.3.0"
 mockk = "1.13.12"
 spring-mockk = "4.0.2"
 restdocs-openapi = "0.18.2"
 
+
 [libraries]
+spring-log4j2 = { group = "org.springframework.boot", name = "spring-boot-starter-log4j2" }
+kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
 kotest-junit = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertion = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
 kotest-extension = { group = "io.kotest.extensions", name = "kotest-extensions-spring", version.ref = "kotest-extension" }
@@ -28,6 +32,7 @@ java-library = { id = "java-library" }
 java-fixture = { id = "java-test-fixtures" }
 
 [bundles]
+logging = ["spring-log4j2", "kotlin-logging"]
 kotest = ["kotest-junit", "kotest-assertion", "kotest-extension"]
 mockk = ["mockk", "spring-mockk"]
 restdocs = ["spring-restdocs", "restdocs-openapi", "restdocs-openapi-test"]

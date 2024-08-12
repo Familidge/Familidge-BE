@@ -34,9 +34,16 @@ subprojects {
         plugin(rootProject.libs.plugins.restdocs.openapi)
     }
 
+    configurations {
+        all {
+            exclude("org.springframework.boot", "spring-boot-starter-logging")
+        }
+    }
+
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+        implementation(rootProject.libs.bundles.logging)
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("org.springframework.security:spring-security-test")
         testImplementation(rootProject.libs.bundles.kotest)
