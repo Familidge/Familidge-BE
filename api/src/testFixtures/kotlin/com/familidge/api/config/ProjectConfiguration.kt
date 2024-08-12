@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.TestConfiguration
 
 @TestConfiguration
 class ProjectConfiguration : AbstractProjectConfig() {
-    override val isolationMode: IsolationMode = IsolationMode.InstancePerLeaf
-    override val parallelism: Int = 4
+    override val isolationMode = IsolationMode.InstancePerLeaf
+    override val parallelism = 4
 
     override fun extensions(): List<Extension> = listOf(SpringExtension)
 }
