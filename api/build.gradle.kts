@@ -6,6 +6,7 @@ dependencies {
     implementation(project(":domain"))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
     testFixturesImplementation(libs.bundles.kotest)
     testFixturesImplementation(libs.bundles.mockk)
