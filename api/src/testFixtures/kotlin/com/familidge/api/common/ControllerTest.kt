@@ -1,4 +1,4 @@
-package com.familidge.api.config
+package com.familidge.api.common
 
 import io.kotest.core.spec.style.DescribeSpec
 import org.springframework.beans.factory.annotation.Autowired
