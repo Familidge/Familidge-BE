@@ -1,6 +1,6 @@
 package com.familidge.api.global.dto
 
-import com.familidge.api.global.exception.ServerException
+import com.familidge.application.global.exception.ServerException
 
 data class ErrorResponse(
     val code: Int,
