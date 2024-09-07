@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.ComponentScan
 
-@ComponentScan(basePackages = ["com.familidge.application", "com.familidge.infrastructure"])
+@ComponentScan(basePackages = ["com.familidge.api", "com.familidge.application", "com.familidge.infrastructure"])
 @SpringBootApplication
 class ApiApplication
 
