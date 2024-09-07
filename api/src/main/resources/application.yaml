@@ -7,3 +7,7 @@ spring:
     - env
   main:
     banner-mode: off
+jwt:
+  secretKey: ${JWT_SECRET_KEY}
+  accessTokenExpire: ${JWT_ACCESS_EXPIRE}
+  refreshTokenExpire: ${JWT_REFRESH_EXPIRE}
