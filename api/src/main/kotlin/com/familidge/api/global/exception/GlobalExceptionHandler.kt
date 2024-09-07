@@ -20,17 +20,17 @@ class GlobalExceptionHandler(
 
     override fun handle(exchange: ServerWebExchange, exception: Throwable): Mono<Void> =
         with(exchange.response) {
-            val response = ErrorResponse(exception)
+            val body = ErrorResponse(exception)
 
-            logger.error { "${exception::class.simpleName}(\"${exception.message}\") at ${exception.stackTrace[0]}" }
+            logger.error { "${exception::class.simpleName}(\"${exception.message ?: ""}\") at ${exception.stackTrace[0]}" }
 
             headers.contentType = MediaType.APPLICATION_JSON
-            statusCode = HttpStatusCode.valueOf(response.code)
+            statusCode = HttpStatusCode.valueOf(body.code)
 
-            writeBody(response)
+            writeBody(body)
         }
 
-    private fun ServerHttpResponse.writeBody(body: Any) =
+    private fun ServerHttpResponse.writeBody(body: Any): Mono<Void> =
         writeWith(
             Mono.just(
                 bufferFactory()
