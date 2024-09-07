@@ -8,6 +8,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
+    implementation(libs.bundles.jwt)
     testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
     testFixturesImplementation(libs.bundles.kotest)
     testFixturesImplementation(libs.bundles.mockk)

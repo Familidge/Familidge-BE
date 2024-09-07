@@ -1,4 +1,5 @@
 dependencies {
     implementation(project(":domain"))
-    implementation("org.springframework.boot:spring-boot")
+    implementation("org.springframework:spring-context")
+    implementation(libs.bundles.jwt)
 }
