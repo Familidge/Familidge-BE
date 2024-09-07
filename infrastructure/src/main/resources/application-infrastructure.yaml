@@ -3,3 +3,6 @@ spring:
     url: ${R2DBC_URL}
     username: ${R2DBC_USERNAME}
     password: ${R2DBC_PASSWORD}
+  data:
+    redis:
+      url: ${REDIS_URL}
