@@ -23,28 +23,33 @@ data class JwtAuthentication(
             }
     }
 
-    override fun getName(): String {
-        throw UnsupportedOperationException("JwtAuthentication does not include name.")
-    }
-
     override fun getAuthorities(): Set<GrantedAuthority> = roles
-
-    override fun getCredentials() {
-        throw UnsupportedOperationException("JwtAuthentication does not support credential.")
-    }
-
-    override fun getDetails() {
-        throw UnsupportedOperationException("JwtAuthentication does not support details.")
-    }
-
-    override fun getPrincipal() {
-        throw UnsupportedOperationException("JwtAuthentication does not support principal.")
-    }
 
     override fun isAuthenticated(): Boolean = true
 
+    @Deprecated("JwtAuthentication does not include name.")
+    override fun getName(): String {
+        throw UnsupportedOperationException()
+    }
+
+    @Deprecated("JwtAuthentication does not support credential.")
+    override fun getCredentials() {
+        throw UnsupportedOperationException()
+    }
+
+    @Deprecated("JwtAuthentication does not support details.")
+    override fun getDetails() {
+        throw UnsupportedOperationException()
+    }
+
+    @Deprecated("JwtAuthentication does not support principal.")
+    override fun getPrincipal() {
+        throw UnsupportedOperationException()
+    }
+
+    @Deprecated("Cannot change the authenticated state of JwtAuthentication")
     override fun setAuthenticated(isAuthenticated: Boolean) {
-        throw UnsupportedOperationException("Cannot change the authenticated state of JwtAuthentication")
+        throw UnsupportedOperationException()
     }
 }
 
