@@ -5,4 +5,6 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserRepository : CoroutineCrudRepository<UserEntity, Int>
+interface UserRepository : CoroutineCrudRepository<UserEntity, Int> {
+    suspend fun findByEmail(email: String): UserEntity?
+}
