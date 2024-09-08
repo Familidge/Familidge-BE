@@ -10,6 +10,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
     implementation(libs.bundles.jwt)
+    testImplementation(testFixtures(project(":application")))
+    testFixturesImplementation(testFixtures(project(":domain")))
     testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
     testFixturesImplementation(libs.bundles.kotest)
     testFixturesImplementation(libs.bundles.mockk)
