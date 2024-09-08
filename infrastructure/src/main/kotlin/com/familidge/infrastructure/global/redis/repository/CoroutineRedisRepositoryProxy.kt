@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.data.redis.core.ReactiveRedisTemplate
+import org.springframework.data.repository.NoRepositoryBean
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 
+@NoRepositoryBean
 class CoroutineRedisRepositoryProxy(
     private val entityType: Class<*>,
     private val redisTemplate: ReactiveRedisTemplate<String, String>,
