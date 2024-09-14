@@ -17,7 +17,7 @@ class CoroutineRedisRepositoryProxy(
 ) : CoroutineRedisRepository<Any, String> {
     override suspend fun findByKey(key: String): Any? =
         redisTemplate.opsForValue()
-            .get(key)
+            .get(key.withId())
             .map { objectMapper.readValue(it, entityType) }
             .awaitSingleOrNull()
 
@@ -35,7 +35,7 @@ class CoroutineRedisRepositoryProxy(
 
     override suspend fun deleteByKey(key: String): Boolean =
         redisTemplate.opsForValue()
-            .delete(key)
+            .delete(key.withId())
             .awaitSingle()
 
     private fun Any.getKey() =
@@ -44,4 +44,7 @@ class CoroutineRedisRepositoryProxy(
             .apply { setAccessible(true) }
             .get(this)
             .toString()
+            .withId()
+
+    private fun String.withId(): String = "${entityType.simpleName}:$this"
 }
