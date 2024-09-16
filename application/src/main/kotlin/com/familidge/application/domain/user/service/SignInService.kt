@@ -17,27 +17,28 @@ class SignInService(
     private val saveSignUpToken: SaveSignUpTokenPort,
     private val jwtProvider: JwtProvider
 ) : SignInUseCase {
-    override suspend operator fun invoke(command: SignInCommand): SignInResult {
-        val email = getEmailByTokenAndProvider(command.token, command.provider)
-        val user = getUserByEmail(email)
-        val signUpToken =
-            if (user == null)
-                saveSignUpToken(
-                    SignUpToken(
-                        email = email,
-                        content = command.token,
-                        provider = command.provider
+    override suspend operator fun invoke(command: SignInCommand): SignInResult =
+        with(command) {
+            val email = getEmailByTokenAndProvider(token, provider)
+            val user = getUserByEmail(email)
+            val signUpToken =
+                if (user == null)
+                    saveSignUpToken(
+                        SignUpToken(
+                            email = email,
+                            content = token,
+                            provider = provider
+                        )
                     )
-                )
-            else null
-        val (accessToken, refreshToken) = user?.run(jwtProvider::createTokens) ?: (null to null)
+                else null
+            val (accessToken, refreshToken) = user?.run(jwtProvider::createTokens) ?: (null to null)
 
-        return SignInResult(
-            isNew = (user == null),
-            email = email,
-            signUpToken = signUpToken?.content,
-            accessToken = accessToken,
-            refreshToken = refreshToken
-        )
-    }
+            SignInResult(
+                isNew = (user == null),
+                email = email,
+                signUpToken = signUpToken?.content,
+                accessToken = accessToken,
+                refreshToken = refreshToken
+            )
+        }
 }
